@@ -25,17 +25,31 @@ namespace Blog.DataLayer.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Post>()
-                .HasKey(p => p.Id);
+                .HasOne(p => p.User)
+                .WithMany(u => u.Posts)
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Category>()
-                .HasKey(p => p.Id);
-
-            modelBuilder.Entity<User>()
-                .HasKey(p => p.Id);
+            modelBuilder.Entity<Post>()
+                .HasOne(p => p.Category)
+                .WithMany(c => c.Posts)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<PostComment>()
-                .HasKey(p => p.Id);
+                .HasOne(pc => pc.User)
+                .WithMany(u => u.PostComments)
+                .HasForeignKey(pc => pc.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PostComment>()
+                .HasOne(pc => pc.Post)
+                .WithMany(p => p.PostComments)
+                .HasForeignKey(pc => pc.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
+
+
 
     }
 }

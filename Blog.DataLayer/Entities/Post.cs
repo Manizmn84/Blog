@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace Blog.DataLayer.Entities
 {
-    public class Post
+    public class Post : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
         public int UserId { get; set; }
         public int CategoryId { get; set; }
 
