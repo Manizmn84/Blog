@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blog.DataLayer.Entities
 {
-    internal class User
+    public class User
     {
         [Key]
         public int Id { get; set; }
@@ -21,7 +21,7 @@ namespace Blog.DataLayer.Entities
         public ICollection<PostComment> PostComments { get; set; }
     }
 
-    enum UserRole
+    public enum UserRole
     {
         Admin,
         User,

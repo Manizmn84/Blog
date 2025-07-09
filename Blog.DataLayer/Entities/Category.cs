@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blog.DataLayer.Entities
 {
-    internal class Category
+    public class Category
     {
         [Key]
         public int Id { get; set; }

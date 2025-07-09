@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Blog.DataLayer.Entities
 {
-    internal class PostComment
+    public class PostComment
     {
         [Key]
         public int Id { get; set; }
